@@ -39,7 +39,7 @@ RUN . ${cryptography_dir}/venv/bin/activate && \
 
 # This is the main mitmproxy container that will be run. We use a new image so
 # the build tools are not left over in the final image.
-FROM mitmproxy/mitmproxy:latest AS mitmproxy
+FROM mitmproxy/mitmproxy:10.3.1 AS mitmproxy
 ARG openssl_dir cryptography_dir
 COPY --from=openssl-build ${openssl_dir} ${openssl_dir}
 COPY --from=openssl-build ${cryptography_dir}/venv/lib /usr/local/lib
