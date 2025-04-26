@@ -10,9 +10,7 @@ jobs:
     strategy:
       matrix:
         config:
-          - local # Redirect Pretendo requests to a local server (default)
           - wiiu # For Wii U network dumps
-          - 3ds # For 3DS network dumps
     runs-on: ubuntu-latest
 
     steps:
@@ -54,7 +52,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64
           push:
             ${{ github.event != 'pull_request' && github.ref == 'refs/heads/master' }}
           tags: ${{ steps.meta.outputs.tags }}
